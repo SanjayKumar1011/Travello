@@ -2,6 +2,9 @@ from django.shortcuts import render,HttpResponse,redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login,logout
 from django.contrib import messages
+from django.core.mail import send_mail
+from django.conf import settings
+
 
 # Create your views here.
 def register(request):
@@ -24,7 +27,15 @@ def register(request):
         user=User.objects.create_user(username=name,email=email,password=password)
         user.save()
         print(user)
+        # send_mail(
+        #     subject='Welcome to Our Site!',
+        #     message=f'Hi {name},\n\nThanks for registering at our site!',
+        #     from_email=settings.DEFAULT_FROM_EMAIL,
+        #     recipient_list=[email],
+        #     fail_silently=False,
+        # )
         return redirect('login')
+       
 
 
     return render(request,'register.html')

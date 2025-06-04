@@ -37,6 +37,7 @@
 										{% if user.is_authenticated %}
 										<li>Hi and Hello,{{user.username}}</li>
 										<li><a href="accounts/logout">Logout</a></li>
+										<li><a href="accounts/jwtcred">JWTcred</a></li>
 										{% else %}
 										<li><a href="accounts/register">Register</a></li>
 										<li><a href="accounts/login">Login</a></li>

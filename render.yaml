@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: Travello
+    env: python
+    buildCommand: pip install -r requirements.txt && python manage.py migrate && python manage.py collectstatic --no-input
+    startCommand: gunicorn travelloMain.wsgi
+    envVars:
+      - key: DEBUG
+        value: False
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_HOSTS
+        value: Travello.onrender.com
+      - fromDatabase:
+          name: Travello-db
+          property: connectionString
+          key: DATABASE_URL
+      - key: EMAIL_HOST_USER
+        value: your-email@gmail.com
+      - key: EMAIL_HOST_PASSWORD
+        value: your-app-password
+databases:
+  - name: Travello-db              # This name must match above
+    databaseName: Travello      # This is your actual DB name in PostgreSQL
+    user: Travello_user   

@@ -15,13 +15,12 @@ services:
         fromDatabase:
           name: travello_db
           property: connectionString
-
       - key: EMAIL_HOST_USER
         value: your-email@gmail.com
       - key: EMAIL_HOST_PASSWORD
         value: your-app-password
 
 databases:
-  - name: travello_db              # Internal Render name (lowercase + underscore)
-    databaseName: travello         # Actual PostgreSQL DB name (lowercase)
-    user: travello_user            # PostgreSQL username (lowercase)
+  - name: travello_db
+    databaseName: travello
+    user: travello_user

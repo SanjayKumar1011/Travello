@@ -93,7 +93,7 @@ WSGI_APPLICATION = 'travelloMain.wsgi.application'
 if os.environ.get('RENDER') == 'true':
     # Render deployment: use DATABASE_URL
     DATABASES = {
-        'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+        'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'),conn_max_age=600)
     }
 else:
     # Local development
